@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="estadisticas graficos covid19 html5 css javascript">
+    <title>Estadisticas y graficos covid 19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+        <!-- Header -->
+        <header id="header-inner">
+        
+            <div class="container">
+                
+                <nav id="main-nav">
+                    
+                    <p class="logo">JDV</p>
+                    
+                    <ul>
+                        
+                        <li><a href="index.html" class="current">Inicio</a></li>
+                        <li><a href="#comparativa" >Comparativa</a></li>
+
+                        
+                    </ul>
+                    
+                </nav>
+                
+            </div>
+            
+        </header>
+    <div class="container-p">
+    <div class="container-form">
+
+        <h1 class="section-title">Estadisticas Covid 19</h1>
+        <label>Seleccione una Fecha</label>
+         <input id="inputFecha" type="date" min="2020-03-01"><br>
+        
+      
+        <label >Seleccione un Pais</label>
+        <select id="selectPais">
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Brazil">Brasil</option>
+            <option value="Peru">Peru</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Chile">Chile</option>
+            <option value="Spain">España</option>
+            <option value="Germany">Alemania</option>
+            <option value="Italy">Italia</option>
+            <option value="US">Estados Unidos</option>
+            <option value="United Kingdom">Reino Unido</option>
+            <option value="total">Mundo</option>
+        </select>
+        <br>
+        <button class="btn-dark" id="cargar">Cargar Estadisticas</button>
+        <br>
+    </div>
+</div>
+
+    <section id="about-b" class=" py-3">
+       
+        <div class="container bg-dark">
+            
+            <h2 class="section-title">Estadisticas De:<span id="titulo"></span></h2> 
+            <div class="bottom-line"></div>
+            <p>Fuente de los datos: <span id="fuente"></span></p>
+            <br>
+            <h4>Total de Casos Confirmados:  <span id="today_confirmed"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_confirmed" style="width:0%"></div>
+                
+            </div>
+            
+
+            <h4>Total de Muertes:  <span id="today_deaths"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_deaths" style="width:0%"></div>
+                
+            </div>
+            
+
+
+
+        <!--    <h4>Pacientes hospitalizados con sintomas:  <span id="today_hospitalised_patients_with_symptoms"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_hospitalised_patients_with_symptoms" style="width:0%"></div>
+                
+            </div>
+            
+
+
+
+            <h4>Cuidados Intensivos:  <span id="today_intensive_care"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_intensive_care" style="width:0%"></div>
+                
+            </div>
+            
+        -->
+
+
+            <h4>Casos Confirmados del Día:  <span id="today_new_confirmed"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_confirmed" style="width:0%"></div>
+                
+            </div>
+            
+
+
+
+            <h4>Muertes del Día:  <span id="today_new_deaths"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_deaths" style="width:0%"></div>
+                
+            </div>
+            
+
+<!--
+
+            <h4>Nuevos Pacientes Hospitalizados con sintomas:  <span id="today_new_hospitalised_patients_with_symptoms"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_hospitalised_patients_with_symptoms" style="width:0%"></div>
+                
+            </div>
+
+ 
+            <h4>Nuevos Cuidados intensivos:  <span id="today_new_intensive_care"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_intensive_care" style="width:0%"></div>
+                
+            </div>
+
+ 
+            <h4>Nuevos Casos Abiertos:  <span id="today_new_open_cases"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_open_cases" style="width:0%"></div>
+                
+            </div>
+
+ -->
+            <h4>Pacientes Recuperados del Día:  <span id="today_new_recovered"></span></h4>
+            
+            
+            <div class="progress">
+                
+                <div class="today_new_recovered" style="width:0%"></div>
+                
+            </div>
+
+ <!--
+            <h4>Nuevo Total de Pacientes Hospitalizados:  <span id="today_new_total_hospitalised_patients"></span></h4>
+            
+            <div class="progress">
+                
+                <div class="today_new_total_hospitalised_patients" style="width:0%"></div>
+                
+            </div>
+-->
+        </div>
+        
+    </section>
+    <div class="container bg-dark">
+        <div class="container-canvas">
+            <h2 class="section-title">Grafico de barras</h2> 
+            <div class="bottom-line"></div>
+            
+            <canvas id= "migrafica"></canvas>
+
+        </div>
+    </div>  
+
+    
+    <div class="container-form bg-dark">
+
+        <h1 id="comparativa" class="section-title titulo">Comparativa Diaria Covid 19</h1>
+        <div class="bottom-line"></div>
+        
+        <label >Seleccione Tres Paises y Presione Comparar</label>
+        <br>
+        <div class="comp">
+            <select id="selectPais1">
+                <option value="Argentina">Argentina</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Brazil">Brasil</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Chile">Chile</option>
+                <option value="Peru">Peru</option>
+                <option value="Spain">España</option>
+                <option value="Germany">Alemania</option>
+                <option value="Italy">Italia</option>
+                <option value="US">Estados Unidos</option>
+                <option value="United Kingdom">Reino Unido</option>                                                 
+            </select>
+                <select id="selectPais2">
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brazil">Brasil</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Spain">España</option>
+                    <option value="Germany">Alemania</option>
+                    <option value="Italy">Italia</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="United Kingdom">Reino Unido</option>                                                 
+                </select>
+                <select id="selectPais3">
+                    <option value="Chile">Chile</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brazil">Brasil</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Spain">España</option>
+                    <option value="Germany">Alemania</option>
+                    <option value="Italy">Italia</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="United Kingdom">Reino Unido</option>                                                 
+                </select>
+        </div>
+        <br>
+        <button class="btn-light" id="cargarComparativa">Comparar</button>
+        <br>
+
+
+    </div>
+
+    <div class="container bg-dark">
+        <div class="container-canvas">
+            <h2 class="section-title">Grafico Comparativo</h2> 
+            
+            <div class="bottom-line"></div>
+
+            <p>Última Fecha: <span id="fechaComparativa"></span></p>
+            
+            
+            <canvas id= "migraficapie"></canvas>
+            <br>
+            <h4>Total de Muertes: </h4>
+            <p id="paisUno"><span id="pun"></span></p>
+            <p id="paisDos"><span id="pdn"></span></p>
+            <p id="paisTres"><span id="ptn"></span></p>
+
+        </div>
+    </div> 
+    <div class="container bg-dark">
+    <footer id="main-footer">
+         
+        <div class="footer-content">
+            
+            <p>Página desarrollada por Jonatan Villalba</p> 
+            <p>&copy; 2020. Todos Los Derechos Reservados</p>
+            
+            <div class="social">
+                
+                <i class="fab fa-twitter"></i>
+                <a href="https://www.facebook.com/jonatan.villalba.14" target="_blank"> <i class="fab fa-facebook"></i></a>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+                
+            </div>
+            
+        </div>
+         
+    </footer>
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src='js/script.js'></script>
+</body>
+</html>
